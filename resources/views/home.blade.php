@@ -3,7 +3,13 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+            <div class="col-md-2">
+                <div class="card">
+                    <div class="card-header">x</div>
+                    <div class="card-body">xxxx</div>
+                </div>
+            </div>
+        <div class="col-md-10">
             <div class="card">
                 <div class="card-header">Dashboard</div>
 
@@ -15,7 +21,16 @@
                     @endif
 
                     You are logged in!
+                    <brand-form  />
                 </div>
+            </div>
+            <div class="card">
+                    <div class="card-header">Produto</div>
+                    <div class="card-body">
+
+                            <product-form  />
+                    </div>
+
             </div>
         </div>
     </div>
