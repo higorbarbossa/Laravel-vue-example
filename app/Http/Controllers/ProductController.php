@@ -40,29 +40,28 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        if (auth()->check()) {
-            $product = new Product();
+        $product = new Product();
 
-            $product->name = $request->name;
-            $product->description = $request->description;
+        $product->name = $request->name;
+        $product->description = $request->description;
 
-            // fazer o upload da image
-            $nameFile = null;
+        // fazer o upload da image
+        $nameFile = null;
 
-            if ($request->hasFile('image') && $request->file('image')->isValid()) {
-                $name = uniqid(date('HisYmd'));
-                $extension = $request->image->extension();
-                $nameFile = "{$name}.{$extension}";
+        if ($request->hasFile('image') && $request->file('image')->isValid()) {
+            $name = uniqid(date('HisYmd'));
+            $extension = $request->image->extension();
+            $nameFile = "{$name}.{$extension}";
 
-                $path = $request->image->storeAs('products', $nameFile);
-            }
-
-            $product->pathToImage = $path;
-
-            return responder()->success($product->save())->respond();
-        } else {
-            return false;
+            $path = $request->image->storeAs('products', $nameFile);
         }
+
+        $product->pathToImage = $path;
+
+
+        return ($product->save())
+            ? response()->json('O produto é cadastrado')
+            : responder()->error('no-save', 'Falha ao salvar nova Marca.')->respond();
     }
 
     /**
@@ -100,16 +99,15 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if (auth()->check()) {
-            $product = Product::find($id);
+        $product = Product::find($id);
 
-            $product->name = $request->name;
-            $product->description = $request->description;
+        $product->name = $request->name;
+        $product->description = $request->description;
 
-            return $product->save();
-        } else {
-            return false;
-        }
+
+        return ($product->save())
+            ? response()->json('O produto é editado')
+            : responder()->error('no-save', 'Falha ao editar Marca.')->respond();
     }
 
     /**
@@ -120,13 +118,10 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        if (auth()->check()) {
-            $product = Product::find($id);
+        $product = Product::find($id);
 
-            return responder()->success($product->delete())->respond();
-        } else {
-            return responder()->error('fail_delete', 'Erro.')->respond();
-            ;
-        }
+        return ($product->delete())
+            ? response()->json('O produto é removido do sistema')
+            : responder()->error('no-save', 'Falha ao remover o produto.')->respond();
     }
 }

@@ -3,9 +3,6 @@
 
 @section('content')
 
-<div id="appp">
-</div>
-
-<script src="/js/vue-app.js"></script>
+    <k-brand-painel />
 
 @endsection

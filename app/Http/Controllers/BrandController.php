@@ -48,16 +48,14 @@ class BrandController extends Controller
      */
     public function store(Request $request)
     {
-        if (auth()->check()) {
-            $brand = new Brand;
+        $brand = new Brand;
 
-            $brand->name = $request->name;
-            $brand->description = $request->description;
+        $brand->name = $request->name;
+        $brand->description = $request->description;
 
-            return $brand->save();
-        } else {
-            return false;
-        }
+        return ($brand->save())
+            ? response()->json('A marca é cadastrada')
+            : responder()->error('no-save', 'Falha ao salvar nova Marca.')->respond();
     }
 
     /**
@@ -106,16 +104,14 @@ class BrandController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if (auth()->check()) {
-            $brand = Brand::find( $id);
+        $brand = Brand::find($id);
 
-            $brand->name = $request->name;
-            $brand->description = $request->description;
+        $brand->name = $request->name;
+        $brand->description = $request->description;
 
-            return $brand->save();
-        } else {
-            return false;
-        }
+        return ($brand->save())
+            ? response()->json('A marca é editada')
+            : responder()->error('no-save', 'Falha ao editar Marca.')->respond();
     }
 
     /**
@@ -126,12 +122,12 @@ class BrandController extends Controller
      */
     public function destroy($id)
     {
-        if (auth()->check()) {
+
             $brand = Brand::find($id);
 
-            return $brand->delete();
-        } else {
-            return false;
-        }
+            return ($brand->delete())
+            ? response()->json('A marca e todos os produtos relativos a essa marca são removidos do
+            sistema')
+            : responder()->error('no-save', 'Falha ao remover a marca.')->respond();
     }
 }

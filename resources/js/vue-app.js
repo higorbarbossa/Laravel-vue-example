@@ -1,17 +1,31 @@
-import Vue from 'vue'
+import Vue from 'vue';
 import VueRouter from 'vue-router';
-import ExampleComponent from './components/ExampleComponent.vue';
+import axios from 'axios';
+import VueAxios from 'vue-axios'
+
+import App from './components/App.vue';
 
 import { routes } from './routes';
 
 Vue.use(VueRouter);
 
-const router = new VueRouter({
+axios.create({
+    baseURL: 'http://localhost:8000',
+    headers: {
+        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+    }
+});
 
+Vue.use(VueAxios, axios);
+
+
+const router = new VueRouter({
+    mode: 'history',
     routes
 });
 
 new Vue({
-  el: '#app',
-  router
+  el: '#appp',
+  router,
+  render: h => h(App)
 });
