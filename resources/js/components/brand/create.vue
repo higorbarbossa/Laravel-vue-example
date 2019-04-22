@@ -10,6 +10,7 @@
             class="form-control"
             id="nameBrand"
             placeholder="Nome da Marca"
+            required
           >
         </div>
 
@@ -21,6 +22,7 @@
             class="form-control"
             id="desc"
             placeholder="Descrição"
+            required
           >
         </div>
 

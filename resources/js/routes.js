@@ -1,10 +1,18 @@
-import create from './components/brand/create.vue';
-import edit from './components/brand/edit.vue';
-import list from './components/brand/list.vue';
+import createBrand from './components/brand/create.vue';
+import editBrand from './components/brand/edit.vue';
+import listBrand from './components/brand/list.vue';
+
+import createProduct from './components/product/create.vue';
+import editProduct from './components/product/edit.vue';
+import listProduct from './components/product/list.vue';
 
 export const routes = [
 
-    { path: '/vue/brand/create', component: create, name: 'Create Brand'},
-    { path: '/vue/brand/edit/:id', component: edit, name: 'Update Brand'},
-    { path: '/vue/brand/list', component: list, name: 'List Brand' }
+    { path: '/vue/brand/create', component: createBrand, name: 'Create Brand'},
+    { path: '/vue/brand/edit/:id', component: editBrand, name: 'Update Brand'},
+    { path: '/vue/brand/list', component: listBrand, name: 'List Brand' },
+
+    { path: '/vue/product/create', component: createProduct, name: 'Create product'},
+    { path: '/vue/product/edit/:id', component: editProduct, name: 'Update product'},
+    { path: '/vue/product/list', component: listProduct, name: 'List product' }
 ];

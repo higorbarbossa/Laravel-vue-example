@@ -40,28 +40,36 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        //return response()->json($request->file('img')->isValid());
+
         $product = new Product();
 
         $product->name = $request->name;
         $product->description = $request->description;
 
+        // return response()->json($product);
         // fazer o upload da image
         $nameFile = null;
 
-        if ($request->hasFile('image') && $request->file('image')->isValid()) {
+        if ($request->hasFile('img') && $request->file('img')->isValid()) {
             $name = uniqid(date('HisYmd'));
-            $extension = $request->image->extension();
+            $extension = $request->img->extension();
             $nameFile = "{$name}.{$extension}";
 
-            $path = $request->image->storeAs('products', $nameFile);
+            $path = $request->img->storeAs('uploads/products', $nameFile);
+        } else {
+            return response()->json('XXXXXXXXXx');
         }
 
         $product->pathToImage = $path;
 
+        $idBrand = (int) $request->idBrand;
 
-        return ($product->save())
+        $brand = \App\Models\Brand::find($idBrand);
+
+        return ($brand->products()->save($product))
             ? response()->json('O produto é cadastrado')
-            : responder()->error('no-save', 'Falha ao salvar nova Marca.')->respond();
+            : response()->json('O cadastro FALHOU');
     }
 
     /**
@@ -99,13 +107,20 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // return response()->json($request->input());
+
         $product = Product::find($id);
+
+        $product->brand()->dissociate();
 
         $product->name = $request->name;
         $product->description = $request->description;
 
+        $brand_id = (int) $request->brand_id;
 
-        return ($product->save())
+        $brand = \App\Models\Brand::find($brand_id);
+
+        return ($brand->products()->save($product))
             ? response()->json('O produto é editado')
             : responder()->error('no-save', 'Falha ao editar Marca.')->respond();
     }

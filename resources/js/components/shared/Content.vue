@@ -10,9 +10,6 @@
 
 <script>
 export default {
-  props: ["titulo"],
-  mounted() {
-    console.log("Component mounted.");
-  }
+  props: ["titulo"]
 };
 </script>
