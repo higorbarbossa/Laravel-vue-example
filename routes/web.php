@@ -17,15 +17,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
 
 
 Route::resource('brands', 'BrandController');
 Route::resource('products', 'ProductController');
 
-Route::get('/teste', function () {
-    return view('vue.teste');
-});
 
 Route::get('/vue/{vue_capture?}', function () {
     return view('vue.index');

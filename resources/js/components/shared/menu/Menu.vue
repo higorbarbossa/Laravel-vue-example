@@ -4,8 +4,17 @@
       <div class="card-body">
         <nav class="navbar bg-light">
           <ul class="navbar-nav">
-            <li class="nav-item" v-for="rota in routes" :key="rota.id">
-              <router-link class="nav-link" :to="rota.path">{{ rota.name }}</router-link>
+            <li class="nav-item">
+              <router-link class="nav-link" to="/vue/brand/create">Cadastrar Marca</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link class="nav-link" to="/vue/brand/list">Listar Marcas</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link class="nav-link" to="/vue/product/create">Cadastrar Produto</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link class="nav-link" to="/vue/product/list">Listar Produtos</router-link>
             </li>
           </ul>
         </nav>
@@ -15,12 +24,5 @@
 </template>
 
 <script>
-import { routes } from "../../../routes";
-export default {
-  data() {
-    return {
-      routes
-    };
-  }
-};
+export default {};
 </script>
