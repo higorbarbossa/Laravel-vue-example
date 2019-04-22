@@ -87,7 +87,7 @@ export default {
           this.name = result.data.data.name;
           this.description = result.data.data.description;
           this.idBrand = result.data.data.brand_id;
-          console.log(this.produto);
+          alert(response.data);
         })
         .catch(e => {
           console.log(e);

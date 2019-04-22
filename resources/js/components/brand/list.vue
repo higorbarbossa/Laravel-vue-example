@@ -7,8 +7,9 @@
             <h4 class="card-title">{{ marca.name }}</h4>
             <p class="card-text">{{ marca.description }}.</p>
 
-
-            <router-link :to="pathEdit + marca.id" ><button class="btn btn-primary">Editar</button></router-link>
+            <router-link :to="pathEdit + marca.id">
+              <button class="btn btn-primary">Editar</button>
+            </router-link>
             <button class="btn btn-danger" @click="deleteBrand(marca.id)">Delete</button>
           </div>
         </div>
@@ -28,7 +29,7 @@ export default {
   data() {
     return {
       marcas: [],
-        pathEdit : '/vue/brand/edit/'
+      pathEdit: "/vue/brand/edit/"
     };
   },
   methods: {
@@ -47,10 +48,9 @@ export default {
       this.axios
         .delete("/brands/" + id)
         .then(result => {
-
-          console.log(this.marcas.splice(this.marcas.indexOf(id)));
-            this.getBrands();
-
+          this.marcas.splice(this.marcas.indexOf(id));
+          this.getBrands();
+          alert(response.data);
         })
         .catch(e => {
           console.log(e);
@@ -58,15 +58,15 @@ export default {
     }
   },
   created() {
-      this.axios
-        .get("/brands")
-        .then(result => {
-          this.marcas = result.data.data;
-          console.log(this.marcas);
-        })
-        .catch(e => {
-          console.log(e);
-        });
+    this.axios
+      .get("/brands")
+      .then(result => {
+        this.marcas = result.data.data;
+        console.log(this.marcas);
+      })
+      .catch(e => {
+        console.log(e);
+      });
   }
 };
 </script>

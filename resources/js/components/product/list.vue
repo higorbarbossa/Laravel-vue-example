@@ -1,9 +1,9 @@
 <template>
   <k-content>
-    <div class="card-body">
+    <div class="card-body ">
       <div class="row justify-content-center">
-        <div class="card" style="width: 18rem;" v-for="produto in produtos" :key="produto.id">
-          <img src="" class="card-img-top" alt="...">
+        <div class="card col-md-3" style="width: 18rem;" v-for="produto in produtos" :key="produto.id">
+          <img :src="produto.pathToImage" class="card-img-top" alt="...">
 
           <div class="card-body">
             <h5 class="card-title">{{produto.name}}</h5>
@@ -52,8 +52,9 @@ export default {
       this.axios
         .delete("/products/" + id)
         .then(result => {
-          console.log(this.produtos.splice(this.produtos.indexOf(id)));
+          this.produtos.splice(this.produtos.indexOf(id));
           this.getBrands();
+          alert(response.data);
         })
         .catch(e => {
           console.log(e);

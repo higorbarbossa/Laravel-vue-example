@@ -53,7 +53,7 @@ export default {
       this.axios
         .post(uri, this.brand)
         .then(response => {
-          console.log(response);
+          alert(response.data);
         })
         .catch(function(error) {
           console.log(error);

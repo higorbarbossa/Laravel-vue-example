@@ -1844,7 +1844,7 @@ __webpack_require__.r(__webpack_exports__);
     createBrand: function createBrand() {
       var uri = "/brands";
       this.axios.post(uri, this.brand).then(function (response) {
-        console.log(response);
+        alert(response.data);
       })["catch"](function (error) {
         console.log(error);
       });
@@ -1911,7 +1911,7 @@ __webpack_require__.r(__webpack_exports__);
     updateBrand: function updateBrand() {
       var uri = "/brands/ " + this.$route.params.id;
       this.axios.patch(uri, this.brand).then(function (response) {
-        console.log(response);
+        alert(response.data);
       })["catch"](function (error) {
         console.log(error);
       });
@@ -1963,6 +1963,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -1971,7 +1972,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       marcas: [],
-      pathEdit: '/vue/brand/edit/'
+      pathEdit: "/vue/brand/edit/"
     };
   },
   methods: {
@@ -1989,9 +1990,11 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       this.axios["delete"]("/brands/" + id).then(function (result) {
-        console.log(_this2.marcas.splice(_this2.marcas.indexOf(id)));
+        _this2.marcas.splice(_this2.marcas.indexOf(id));
 
         _this2.getBrands();
+
+        alert(response.data);
       })["catch"](function (e) {
         console.log(e);
       });
@@ -2103,7 +2106,7 @@ __webpack_require__.r(__webpack_exports__);
       };
       var uri = "/products";
       this.axios.post(uri, this.formData, config).then(function (response) {
-        console.log(response);
+        alert(response.data);
       })["catch"](function (error) {
         console.log("xxx" + error);
       });
@@ -2218,7 +2221,7 @@ __webpack_require__.r(__webpack_exports__);
         _this.name = result.data.data.name;
         _this.description = result.data.data.description;
         _this.idBrand = result.data.data.brand_id;
-        console.log(_this.produto);
+        alert(response.data);
       })["catch"](function (e) {
         console.log(e);
       });
@@ -2300,9 +2303,11 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       this.axios["delete"]("/products/" + id).then(function (result) {
-        console.log(_this2.produtos.splice(_this2.produtos.indexOf(id)));
+        _this2.produtos.splice(_this2.produtos.indexOf(id));
 
         _this2.getBrands();
+
+        alert(response.data);
       })["catch"](function (e) {
         console.log(e);
       });
@@ -4200,7 +4205,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("k-content", [
-    _c("div", { staticClass: "card-body" }, [
+    _c("div", { staticClass: "card-body " }, [
       _c(
         "div",
         { staticClass: "row justify-content-center" },
@@ -4209,13 +4214,13 @@ var render = function() {
             "div",
             {
               key: produto.id,
-              staticClass: "card",
+              staticClass: "card col-md-3",
               staticStyle: { width: "18rem" }
             },
             [
               _c("img", {
                 staticClass: "card-img-top",
-                attrs: { src: "", alt: "..." }
+                attrs: { src: produto.pathToImage, alt: "..." }
               }),
               _vm._v(" "),
               _c(

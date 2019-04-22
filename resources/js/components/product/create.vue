@@ -84,7 +84,7 @@ export default {
       this.axios
         .post(uri, this.formData, config)
         .then(response => {
-          console.log(response);
+          alert(response.data);
         })
         .catch(function(error) {
           console.log("xxx" + error);

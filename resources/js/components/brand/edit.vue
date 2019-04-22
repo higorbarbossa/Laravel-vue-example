@@ -50,7 +50,7 @@ export default {
       this.axios
         .patch(uri, this.brand)
         .then(response => {
-          console.log(response);
+          alert(response.data);
         })
         .catch(function(error) {
           console.log(error);

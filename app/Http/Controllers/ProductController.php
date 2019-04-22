@@ -61,7 +61,7 @@ class ProductController extends Controller
             return response()->json('XXXXXXXXXx');
         }
 
-        $product->pathToImage = $path;
+        $product->pathToImage = Storage::url($path);
 
         $idBrand = (int) $request->idBrand;
 
@@ -81,7 +81,7 @@ class ProductController extends Controller
     public function show($id)
     {
         $product = Product::find($id);
-
+//        $product->path
         return ($product)
                 ? responder()->success($product)->respond()
                 : responder()->error('no_products', 'Produto inexistente.')->respond();
