@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -16,7 +16,9 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name',
+        'email',
+        'password',
     ];
 
     /**
@@ -36,4 +38,26 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    public function brands()
+    {
+        if(!$this->isAdmin()){
+            return $this->hasMany("App\Models\Acc", "discente_id", "id");
+        }
+        return false;
+    }
+
+    public function products()
+    {
+
+        return $this->hasMany("App\Models\Acc", "discente_id", "id");
+
+    }
+
+
+    public function isAdmin()
+    {
+        return (int) $this->is_admin;
+    }
 }

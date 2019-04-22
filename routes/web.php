@@ -14,3 +14,16 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+//Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::resource('brands', 'BrandController');
+Route::resource('products', 'ProductController');
+
+
+Route::get('/vue/{vue_capture?}', function () {
+    return view('vue.index');
+   })->where('vue_capture', '[\/\w\.-]*');

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "94d4bf9ac7f4a933030e46a346ee2917",
+    "content-hash": "c3dfc34f2189d410f4a43fab667d0af2",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -370,6 +370,77 @@
                 "trusted proxy"
             ],
             "time": "2019-01-10T14:06:47+00:00"
+        },
+        {
+            "name": "flugger/laravel-responder",
+            "version": "v3.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/flugger/laravel-responder.git",
+                "reference": "262350479d2928caf840b7e2a5aeca5704a4f72a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/flugger/laravel-responder/zipball/262350479d2928caf840b7e2a5aeca5704a4f72a",
+                "reference": "262350479d2928caf840b7e2a5aeca5704a4f72a",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "5.1.* || 5.2.* || 5.3.* || 5.4.* || 5.5.* || 5.6.* || 5.7.* || 5.8.*",
+                "illuminate/support": "5.1.* || 5.2.* || 5.3.* || 5.4.* || 5.5.* || 5.6.* || 5.7.* || 5.8.*",
+                "league/fractal": "^0.17.0",
+                "php": "^7.0"
+            },
+            "require-dev": {
+                "doctrine/dbal": "^2.5",
+                "fzaninotto/faker": "^1.6",
+                "illuminate/database": "5.1.* || 5.2.* || 5.3.* || 5.4.* || 5.5.* || 5.6.* || 5.7.* || 5.8.*",
+                "mockery/mockery": "^0.9.5 || ^1.0",
+                "orchestra/testbench": "~3.0",
+                "phpunit/phpunit": "^6.1"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Flugg\\Responder\\ResponderServiceProvider"
+                    ],
+                    "aliases": {
+                        "Responder": "Flugg\\Responder\\Facades\\Responder",
+                        "Transformer": "Flugg\\Responder\\Facades\\Transformer"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Flugg\\Responder\\": "src"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alexander Tømmerås",
+                    "email": "flugged@gmail.com"
+                }
+            ],
+            "description": "A Laravel Fractal package for building API responses, giving you the power of Fractal and the elegancy of Laravel.",
+            "homepage": "https://github.com/flugger/laravel-responder",
+            "keywords": [
+                "api",
+                "fractal",
+                "laravel",
+                "lumen",
+                "responder",
+                "response",
+                "transformer"
+            ],
+            "time": "2019-02-28T13:23:03+00:00"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -752,6 +823,70 @@
                 "storage"
             ],
             "time": "2019-03-30T13:22:34+00:00"
+        },
+        {
+            "name": "league/fractal",
+            "version": "0.17.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/fractal.git",
+                "reference": "a0b350824f22fc2fdde2500ce9d6851a3f275b0e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/fractal/zipball/a0b350824f22fc2fdde2500ce9d6851a3f275b0e",
+                "reference": "a0b350824f22fc2fdde2500ce9d6851a3f275b0e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "require-dev": {
+                "doctrine/orm": "^2.5",
+                "illuminate/contracts": "~5.0",
+                "mockery/mockery": "~0.9",
+                "pagerfanta/pagerfanta": "~1.0.0",
+                "phpunit/phpunit": "~4.0",
+                "squizlabs/php_codesniffer": "~1.5",
+                "zendframework/zend-paginator": "~2.3"
+            },
+            "suggest": {
+                "illuminate/pagination": "The Illuminate Pagination component.",
+                "pagerfanta/pagerfanta": "Pagerfanta Paginator",
+                "zendframework/zend-paginator": "Zend Framework Paginator"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.13-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "League\\Fractal\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Phil Sturgeon",
+                    "email": "me@philsturgeon.uk",
+                    "homepage": "http://philsturgeon.uk/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Handle the output of complex data structures ready for API output.",
+            "homepage": "http://fractal.thephpleague.com/",
+            "keywords": [
+                "api",
+                "json",
+                "league",
+                "rest"
+            ],
+            "time": "2017-06-12T11:04:56+00:00"
         },
         {
             "name": "monolog/monolog",
